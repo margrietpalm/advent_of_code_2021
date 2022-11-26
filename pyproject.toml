@@ -29,8 +29,10 @@ deps =
     flakeheaven
     pytest
     pytest-cov
+    mypy
 commands =
     flakeheaven lint
+    mypy src/
     pytest --disable-warnings --cov-report term
 
 [run]

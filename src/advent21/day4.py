@@ -1,5 +1,5 @@
 import numpy as np
-import pathlib
+from typing import List, Optional
 
 from advent21.helpers import DataOpener
 
@@ -19,18 +19,18 @@ class Card:
         if self._is_winner():
             self.winner = True
 
-    def _is_winner(self) -> bool:
+    def _is_winner(self) -> np.bool_:
         return np.any(np.sum(self.result, axis=0) == self.grid.shape[0]) or \
                np.any(np.sum(self.result, axis=1) == self.grid.shape[1])
 
 
 class Bingo:
 
-    def __init__(self, cards: list[Card]):
+    def __init__(self, cards: List[Card]):
         self.cards = cards
         self.finished = False
-        self.winners = []
-        self.winning_number = None
+        self.winners: List[Card] = []
+        self.winning_number: Optional[int] = None
 
     def draw(self, number):
         for card in self.cards:

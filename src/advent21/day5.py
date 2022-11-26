@@ -1,6 +1,6 @@
 import abc
 import numpy as np
-
+from typing import Tuple, List
 from advent21.helpers import DataOpener
 
 
@@ -38,7 +38,7 @@ class VerticalLine(Line):
 
 class Ocean:
 
-    def __init__(self, size: tuple[int, int]):
+    def __init__(self, size: Tuple[int, int]):
         self.map = np.zeros(shape=size, dtype=int)
 
     def project_line(self, line: Line):
@@ -46,9 +46,9 @@ class Ocean:
         self.map[idx[:, 0], idx[:, 1]] += 1
 
 
-def load_lines() -> list[Line]:
+def load_lines() -> List[Line]:
     with DataOpener('day5_lines.txt') as f:
-        lines = []
+        lines: List[Line] = []
         for line in f.readlines():
             pt1, pt2 = (np.fromstring(item, sep=',', dtype=int) for item in line.strip('\n').split(' -> '))
             if pt1[1] == pt2[1]:
