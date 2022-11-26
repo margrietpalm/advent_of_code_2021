@@ -1,6 +1,8 @@
 import numpy as np
 import pathlib
 
+from advent21.helpers import DataOpener
+
 
 class Card:
 
@@ -44,7 +46,7 @@ class Bingo:
 
 
 def get_cards():
-    with open(pathlib.Path(__file__).parent.resolve().joinpath('data', 'day4_boards.txt')) as f:
+    with DataOpener('day4_boards.txt') as f:
         text = f.read()
         blocks = text.split('\n\n')
     return [Card(np.reshape(np.fromstring(block, sep=" ", dtype=int), newshape=(5, 5))) for block in blocks]
