@@ -1,10 +1,11 @@
 import json
 import importlib
 import pytest
+from pathlib import Path
 
 @pytest.fixture(scope="module")
 def solutions():
-    with open('solutions.json') as f:
+    with open(Path(__file__).parent.resolve().joinpath('solutions.json')) as f:
         data = json.load(f)
     return data
 
