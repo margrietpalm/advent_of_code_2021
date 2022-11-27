@@ -10,7 +10,7 @@ def solutions():
     return data
 
 
-@pytest.mark.parametrize('day', tuple([f'day{i}' for i in range(1, 26)]))
+@pytest.mark.parametrize('day', tuple([f'day{i:02d}' for i in range(1, 26)]))
 def test_day(day: int, solutions: dict):
     try:
         day_module = importlib.import_module(f'advent21.{day}')
