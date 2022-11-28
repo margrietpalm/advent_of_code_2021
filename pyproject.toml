@@ -6,7 +6,16 @@ dependencies = ["numpy", "matplotlib"]
 [build-system]
 requires = ["setuptools", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
+include-package-data = true
 
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+advent21 = ["data/*.txt", "*.txt"]
 
 [tool.flakeheaven]
 exclude = ["venv", "wolves_in_silico.egg-info", "build/*", ".git/*", ".tox"]
